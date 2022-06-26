@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> letterCasePermutation(String s) {
+       List<String> result = new ArrayList<>();
+		dfsHelpler(s.toCharArray(), 0, result);
+		return result;
+	}
+
+private void dfsHelpler(char[] cArr, int start, List<String> result){
+    if(cArr.length==start) {
+        result.add(String.valueOf(cArr));
+        return;
+    }
+    if(Character.isDigit(cArr[start])){
+        dfsHelpler(cArr,start+1, result);
+    }else{
+        cArr[start] = Character.toUpperCase(cArr[start]);
+         dfsHelpler(cArr,start+1, result);
+         cArr[start] = Character.toLowerCase(cArr[start]);
+         dfsHelpler(cArr,start+1, result);
+    }
+    }
+}
