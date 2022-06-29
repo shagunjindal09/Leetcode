@@ -1,0 +1,19 @@
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+         if(nums == null || nums.length == 0)
+            return 0;
+        
+        int i = 0; // start index
+        int j = nums.length-1; // last index
+        while(i<=j){
+            int mid = (i + j)/2; // middle index
+            if(nums[mid] == target)
+                return mid;       // stop iterating when get target in our array
+            else if(nums[mid] < target)
+                i = mid + 1;      // goto right-half in array
+            else
+                j = mid - 1;      // goto left half in array
+        }
+        return i;
+    }
+}
